@@ -9,9 +9,11 @@ namespace Libriary_BAL.Services.IService
 {
     public interface IIssueService
     {
-        Task<List<IssueDTO>> GetAllIssuesAsync(CancellationToken cancellationToken);
-        Task<IssueDTO> GetFullBookInfo(int bookId, CancellationToken cancellationToken);
-        Task<IssueDTO> CreateIssueAsync(IssueDTO issueDTO);
+        //Task<List<IssueDTO>> GetAllIssuesAsync(CancellationToken cancellationToken);
+        Task<List<IssueDTO>> GetAllFullBooksAsync(CancellationToken cancellationToken);
+        Task<IssueDTO> GetFullBookInfoAsync(int bookId, CancellationToken cancellationToken);
+        Task<IssueDTO> GetFullBookInfoByISBNAsync(int ISBN, CancellationToken cancellationToken);
+        Task<IssueToCreateDTO> CreateIssueAsync(IssueToCreateDTO issueDTO);
         Task<IssueDTO> UpdateIssueAsync(IssueToUpdateDTO issueToUpdateDTO);
         Task DeleteIssueAsync(int id);
     }

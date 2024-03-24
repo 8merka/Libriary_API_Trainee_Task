@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Libriary_BAL.DTOs
 {
-    public record IssueDTO
+    public record IssueToCreateDTO
     {
         public DateTime DateOfIssue { get; init; }
         public DateTime DateOfDelivery { get; init; }
-        public BookDTO bookDTO { get; init; }
+        public int BookId { get; init; }
 
-        public IssueDTO() { }
+        public IssueToCreateDTO() { }
 
-        public IssueDTO(DateTime DateOfIssue, DateTime DateOfDelivery, BookDTO bookDTO)
+        public IssueToCreateDTO(DateTime DateOfIssue, DateTime DateOfDelivery, int bookId)
         {
             this.DateOfIssue = DateOfIssue;
             this.DateOfDelivery = DateOfDelivery;
-            this.bookDTO = bookDTO;
+            this.BookId = bookId;
         }
     };
 }

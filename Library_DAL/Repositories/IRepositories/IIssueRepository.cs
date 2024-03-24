@@ -9,6 +9,8 @@ namespace Libriary_DAL.Repositories.IRepositories
 {
     public interface IIssueRepository: IGenericRepository<Issue>
     {
-
+        Task<Issue> GetByIdAsync(int id, CancellationToken cancellationToken = default);
+        Task<Issue> GetByISBNAsync(int ISBN, CancellationToken cancellationToken = default);
+        Task<List<Issue>> GetListAsync(CancellationToken cancellationToken = default);
     }
 }

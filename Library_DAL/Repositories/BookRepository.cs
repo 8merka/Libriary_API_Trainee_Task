@@ -14,12 +14,27 @@ namespace Libriary_DAL.Repositories
         }
         public async Task<Book> GetByIdAsync(int id, CancellationToken cancellationToken = default)
         {
-            return await _appDbContext.Set<Book>().AsNoTracking().FirstOrDefaultAsync(e => e.BookId == id, cancellationToken);
+            return await _appDbContext.Set<Book>()
+                .AsNoTracking()
+                .Include(b => b.Author)
+                .Include(b => b.Genre)
+                .FirstOrDefaultAsync(e => e.BookId == id, cancellationToken);
         }
-
         public async Task<Book> GetByISBNAsync(int ISBN, CancellationToken cancellationToken = default)
         {
-            return await _appDbContext.Set<Book>().AsNoTracking().FirstOrDefaultAsync(e => e.ISBN == ISBN, cancellationToken);
+            return await _appDbContext.Set<Book>()
+                .AsNoTracking()
+                .Include(b => b.Author)
+                .Include(b => b.Genre)
+                .FirstOrDefaultAsync(e => e.ISBN == ISBN, cancellationToken);
+        }
+        public async Task<List<Book>> GetListAsync(CancellationToken cancellationToken = default)
+        {
+            return await _appDbContext.Set<Book>()
+                .AsNoTracking()
+                .Include(b => b.Author)
+                .Include(b => b.Genre)
+                .ToListAsync(cancellationToken);
         }
 
     }

@@ -7,6 +7,7 @@ using Libriary_DAL.Entities.Models;
 using Libriary_DAL.Repositories.IRepositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Libriary_DAL.Repositories;
 
 
 namespace Libriary_BAL.Services
@@ -21,17 +22,30 @@ namespace Libriary_BAL.Services
         private readonly IMapper _mapper = mapper;
         private readonly IIssueRepository _issueRepository = issueRepository;
 
-        public async Task<List<IssueDTO>> GetAllIssuesAsync(CancellationToken cancellationToken = default)
-        {
-            var issuesToReturn = await _issueRepository.GetListAsync(cancellationToken: cancellationToken);
-            _logger.LogInformation("List of {Count} issues has been returned", issuesToReturn.Count);
+        //public async Task<List<IssueDTO>> GetAllIssuesAsync(CancellationToken cancellationToken = default)
+        //{
+        //    var issuesToReturn = await _issueRepository.GetListAsync(cancellationToken: cancellationToken);
+        //    _logger.LogInformation("List of {Count} issues has been returned", issuesToReturn.Count);
 
-            return _mapper.Map<List<IssueDTO>>(issuesToReturn);
+        //    return _mapper.Map<List<IssueDTO>>(issuesToReturn);
+        //}
+        public async Task<List<IssueDTO>> GetAllFullBooksAsync(CancellationToken cancellationToken = default)
+        {
+            var booksToReturn = await _issueRepository.GetListAsync(cancellationToken: cancellationToken);
+            _logger.LogInformation("List of {Count} issues has been returned", booksToReturn.Count);
+
+            return _mapper.Map<List<IssueDTO>>(booksToReturn);
         }
-
-        public async Task<IssueDTO> GetFullBookInfo(int bookId, CancellationToken cancellationToken)
+        public async Task<IssueDTO> GetFullBookInfoByISBNAsync(int ISBN, CancellationToken cancellationToken = default)
         {
-            var issue = await _issueRepository.GetAsync(i => i.BookId == bookId, cancellationToken);
+            var booksToReturn = await _issueRepository.GetByISBNAsync(ISBN, cancellationToken: cancellationToken);
+            _logger.LogInformation("Full book info with ISBN {ISBN} ras been returned", ISBN);
+
+            return _mapper.Map<IssueDTO>(booksToReturn);
+        }
+        public async Task<IssueDTO> GetFullBookInfoAsync(int bookId, CancellationToken cancellationToken)
+        {
+            var issue = await _issueRepository.GetByIdAsync(bookId, cancellationToken);
 
             if (issue == null)
             {
@@ -44,13 +58,13 @@ namespace Libriary_BAL.Services
         }
 
 
-        public async Task<IssueDTO> CreateIssueAsync(IssueDTO issueDTO)
+        public async Task<IssueToCreateDTO> CreateIssueAsync(IssueToCreateDTO issueToCreateDTO)
         {
-            _logger.LogInformation("Creating new issue {@IssueDTO}", issueDTO);
+            _logger.LogInformation("Creating new issue {@IssueDTO}", issueToCreateDTO);
 
-            var createdIssue = await _issueRepository.AddAsync(_mapper.Map<Issue>(issueDTO));
+            var createdIssue = await _issueRepository.AddAsync(_mapper.Map<Issue>(issueToCreateDTO));
 
-            return _mapper.Map<IssueDTO>(createdIssue);
+            return _mapper.Map<IssueToCreateDTO>(createdIssue);
         }
 
         public async Task<IssueDTO> UpdateIssueAsync(IssueToUpdateDTO issueToUpdateDTO)

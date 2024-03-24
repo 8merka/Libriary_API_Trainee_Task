@@ -6,24 +6,23 @@ using System.Threading.Tasks;
 
 namespace Libriary_BAL.DTOs
 {
-    public record BookDTO
+    public record BookToCreateDTO
     {
         public int ISBN { get; init; }
         public string? Title { get; init; }
         public string? Description { get; init; }
-        public AuthorDTO AuthorDTO { get; init; }
-        public GenreDTO GenreDTO { get; init; }
+        public int AuthorId { get; init; }
+        public int GenreId { get; init; }
 
-        public BookDTO() { }
+        public BookToCreateDTO() { }
 
-        public BookDTO(int ISBN, string? Title, string? Description, AuthorDTO AuthorDTO, GenreDTO GenreDTO)
+        public BookToCreateDTO(int ISBN, string? Title, string? Description, int AuthorId, int GenreId)
         {
             this.ISBN = ISBN;
             this.Title = Title;
             this.Description = Description;
-            this.AuthorDTO = AuthorDTO;
-            this.GenreDTO = GenreDTO;
+            this.AuthorId = AuthorId;
+            this.GenreId = GenreId;
         }
     }
 }
-

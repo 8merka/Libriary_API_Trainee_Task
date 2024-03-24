@@ -44,7 +44,7 @@ namespace Libriary_API.Controllers
         [Route("CreateBook")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateBookAsync([FromBody] BookDTO bookDTO)
+        public async Task<IActionResult> CreateBookAsync([FromBody] BookToCreateDTO bookDTO)
         {
             await _bookService.CreateBookAsync(bookDTO);
             return Created();

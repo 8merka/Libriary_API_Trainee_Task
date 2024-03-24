@@ -28,7 +28,7 @@ namespace Libriary_BAL.Services
         }
         public async Task<BookDTO> GetBookByIdAsync(int Id, CancellationToken cancellationToken = default)
         {
-            var bookToReturn = await _bookRepository.GetAsync(x => x.BookId == Id, cancellationToken: cancellationToken);
+            var bookToReturn = await _bookRepository.GetByIdAsync(Id, cancellationToken: cancellationToken);
             if (bookToReturn is null)
             {
                 _logger.LogError("Book with bookId = {BookId} was not found", bookToReturn.BookId);
@@ -38,7 +38,7 @@ namespace Libriary_BAL.Services
         }
         public async Task<BookDTO> GetBookByISBNAsync(int ISBN, CancellationToken cancellationToken = default)
         {
-            var bookToReturn = await _bookRepository.GetAsync(x => x.ISBN == ISBN, cancellationToken: cancellationToken);
+            var bookToReturn = await _bookRepository.GetByISBNAsync(ISBN, cancellationToken: cancellationToken);
             if (bookToReturn is null)
             {
                 _logger.LogError("Book with ISBN = {ISBN} was not found", bookToReturn.ISBN);
@@ -47,13 +47,13 @@ namespace Libriary_BAL.Services
             return _mapper.Map<BookDTO>(bookToReturn);
         }
 
-        public async Task<BookDTO> CreateBookAsync(BookDTO bookDTO)
+        public async Task<BookToCreateDTO> CreateBookAsync(BookToCreateDTO bookToCreateDTO)
         {
-            _logger.LogInformation("Creating new book {@bookDTO}", bookDTO);
+            _logger.LogInformation("Creating new book {@bookDTO}", bookToCreateDTO);
 
-            var createdBook = await _bookRepository.AddAsync(_mapper.Map<Book>(bookDTO));
+            var createdBook = await _bookRepository.AddAsync(_mapper.Map<Book>(bookToCreateDTO));
 
-            return _mapper.Map<BookDTO>(createdBook);
+            return _mapper.Map<BookToCreateDTO>(createdBook);
         }
 
         public async Task<BookDTO> UpdateBookAsync(BookToUpdateDTO bookToUpdateDTO)
