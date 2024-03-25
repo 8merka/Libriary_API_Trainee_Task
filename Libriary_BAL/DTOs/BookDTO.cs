@@ -8,7 +8,7 @@ namespace Libriary_BAL.DTOs
 {
     public record BookDTO
     {
-        public int ISBN { get; init; }
+        public long ISBN { get; init; }
         public string? Title { get; init; }
         public string? Description { get; init; }
         public AuthorDTO AuthorDTO { get; init; }
@@ -16,7 +16,7 @@ namespace Libriary_BAL.DTOs
 
         public BookDTO() { }
 
-        public BookDTO(int ISBN, string? Title, string? Description, AuthorDTO AuthorDTO, GenreDTO GenreDTO)
+        public BookDTO(long ISBN, string? Title, string? Description, AuthorDTO AuthorDTO, GenreDTO GenreDTO)
         {
             this.ISBN = ISBN;
             this.Title = Title;

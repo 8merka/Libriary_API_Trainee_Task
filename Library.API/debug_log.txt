@@ -1966,3 +1966,279 @@ LIMIT 1
 2024-03-25 14:41:57.445 +03:00 [INF] Executed action Libriary_API.Controllers.IssueController.GetFullBookInfo (Library.API) in 58.3679ms
 2024-03-25 14:41:57.448 +03:00 [INF] Executed endpoint 'Libriary_API.Controllers.IssueController.GetFullBookInfo (Library.API)'
 2024-03-25 14:41:57.450 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/api/Issue/GetFullBookInfo?id=4 - 200 null application/json; charset=utf-8 83.5768ms
+2024-03-25 16:29:13.075 +03:00 [INF] User profile is available. Using 'C:\Users\8merka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-25 16:29:13.440 +03:00 [INF] Now listening on: https://localhost:7067
+2024-03-25 16:29:13.442 +03:00 [INF] Now listening on: http://localhost:5002
+2024-03-25 16:29:13.447 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-25 16:29:13.450 +03:00 [INF] Hosting environment: Development
+2024-03-25 16:29:13.452 +03:00 [INF] Content root path: D:\Trainee\Libriary_API_Trainee_Task\Library.API
+2024-03-25 16:29:21.788 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/index.html - null null
+2024-03-25 16:29:22.451 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/index.html - 200 null text/html;charset=utf-8 673.3156ms
+2024-03-25 16:29:22.755 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_vs/browserLink - null null
+2024-03-25 16:29:22.755 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-25 16:29:22.810 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 54.9159ms
+2024-03-25 16:29:22.958 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_vs/browserLink - 200 null text/javascript; charset=UTF-8 203.4719ms
+2024-03-25 16:29:23.042 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - null null
+2024-03-25 16:29:23.338 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 296.4815ms
+2024-03-25 16:29:33.706 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/api/Issue/GetAllFullBooks - null null
+2024-03-25 16:29:33.723 +03:00 [INF] Executing endpoint 'Libriary_API.Controllers.IssueController.GetAllFullBiiksAsync (Library.API)'
+2024-03-25 16:29:33.758 +03:00 [INF] Route matched with {action = "GetAllFullBiiks", controller = "Issue"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllFullBiiksAsync(System.Threading.CancellationToken) on controller Libriary_API.Controllers.IssueController (Library.API).
+2024-03-25 16:29:34.098 +03:00 [INF] Executing action method Libriary_API.Controllers.IssueController.GetAllFullBiiksAsync (Library.API) - Validation state: "Valid"
+2024-03-25 16:29:35.837 +03:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT i."IssueId", i."BookId", i."DateOfDelivery", i."DateOfIssue", b."BookId", b."AuthorId", b."Description", b."GenreId", b."ISBN", b."Title", g."GenreId", g."BookGenre", a."AuthorId", a."LastName", a."Name"
+FROM "Issues" AS i
+INNER JOIN "Books" AS b ON i."BookId" = b."BookId"
+INNER JOIN "Genres" AS g ON b."GenreId" = g."GenreId"
+INNER JOIN "Authors" AS a ON b."AuthorId" = a."AuthorId"
+2024-03-25 16:29:35.941 +03:00 [INF] List of 2 issues has been returned
+2024-03-25 16:29:35.975 +03:00 [INF] Executed action method Libriary_API.Controllers.IssueController.GetAllFullBiiksAsync (Library.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1868.6765ms.
+2024-03-25 16:29:35.989 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Libriary_BAL.DTOs.IssueDTO, Libriary_BAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 16:29:36.018 +03:00 [INF] Executed action Libriary_API.Controllers.IssueController.GetAllFullBiiksAsync (Library.API) in 2250.6292ms
+2024-03-25 16:29:36.022 +03:00 [INF] Executed endpoint 'Libriary_API.Controllers.IssueController.GetAllFullBiiksAsync (Library.API)'
+2024-03-25 16:29:36.035 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/api/Issue/GetAllFullBooks - 200 null application/json; charset=utf-8 2330.3383ms
+2024-03-25 16:30:34.941 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/api/Author/GetAllAuthors - null null
+2024-03-25 16:30:34.968 +03:00 [INF] Executing endpoint 'Libriary_API.Controllers.AuthorController.GetAllAuthorsAsync (Library.API)'
+2024-03-25 16:30:34.993 +03:00 [INF] Route matched with {action = "GetAllAuthors", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAuthorsAsync(System.Threading.CancellationToken) on controller Libriary_API.Controllers.AuthorController (Library.API).
+2024-03-25 16:30:35.026 +03:00 [INF] Executing action method Libriary_API.Controllers.AuthorController.GetAllAuthorsAsync (Library.API) - Validation state: "Valid"
+2024-03-25 16:30:35.128 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT a."AuthorId", a."LastName", a."Name"
+FROM "Authors" AS a
+2024-03-25 16:30:35.206 +03:00 [INF] List of 2 authors has been returned
+2024-03-25 16:30:35.215 +03:00 [INF] Executed action method Libriary_API.Controllers.AuthorController.GetAllAuthorsAsync (Library.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 186.3768ms.
+2024-03-25 16:30:35.220 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Libriary_BAL.DTOs.AuthorDTO, Libriary_BAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 16:30:35.226 +03:00 [INF] Executed action Libriary_API.Controllers.AuthorController.GetAllAuthorsAsync (Library.API) in 228.8656ms
+2024-03-25 16:30:35.229 +03:00 [INF] Executed endpoint 'Libriary_API.Controllers.AuthorController.GetAllAuthorsAsync (Library.API)'
+2024-03-25 16:30:35.232 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/api/Author/GetAllAuthors - 200 null application/json; charset=utf-8 291.0838ms
+2024-03-25 16:31:21.534 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Book/CreateBook - application/json 100
+2024-03-25 16:31:21.552 +03:00 [INF] Executing endpoint 'Libriary_API.Controllers.BookController.CreateBookAsync (Library.API)'
+2024-03-25 16:31:21.560 +03:00 [INF] Route matched with {action = "CreateBook", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateBookAsync(Libriary_BAL.DTOs.BookToCreateDTO) on controller Libriary_API.Controllers.BookController (Library.API).
+2024-03-25 16:31:21.614 +03:00 [INF] Executing action method Libriary_API.Controllers.BookController.CreateBookAsync (Library.API) - Validation state: "Valid"
+2024-03-25 16:31:21.623 +03:00 [INF] Creating new book {"ISBN":13131,"Title":"string","Description":"string","AuthorId":2,"GenreId":5,"$type":"BookToCreateDTO"}
+2024-03-25 16:31:21.897 +03:00 [INF] Executed DbCommand (33ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?', @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Books" ("AuthorId", "Description", "GenreId", "ISBN", "Title")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "BookId";
+2024-03-25 16:31:21.940 +03:00 [INF] Executed action method Libriary_API.Controllers.BookController.CreateBookAsync (Library.API), returned result Microsoft.AspNetCore.Mvc.CreatedResult in 323.2893ms.
+2024-03-25 16:31:21.944 +03:00 [INF] Executing CreatedResult, writing value of type 'null'.
+2024-03-25 16:31:21.947 +03:00 [INF] Executed action Libriary_API.Controllers.BookController.CreateBookAsync (Library.API) in 381.2469ms
+2024-03-25 16:31:21.949 +03:00 [INF] Executed endpoint 'Libriary_API.Controllers.BookController.CreateBookAsync (Library.API)'
+2024-03-25 16:31:21.951 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Book/CreateBook - 204 null null 417.581ms
+2024-03-25 16:43:18.407 +03:00 [INF] User profile is available. Using 'C:\Users\8merka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-25 16:43:18.800 +03:00 [INF] Now listening on: https://localhost:7067
+2024-03-25 16:43:18.802 +03:00 [INF] Now listening on: http://localhost:5002
+2024-03-25 16:43:18.806 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-25 16:43:18.807 +03:00 [INF] Hosting environment: Development
+2024-03-25 16:43:18.809 +03:00 [INF] Content root path: D:\Trainee\Libriary_API_Trainee_Task\Library.API
+2024-03-25 16:43:27.314 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/index.html - null null
+2024-03-25 16:43:27.832 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/index.html - 200 null text/html;charset=utf-8 527.4805ms
+2024-03-25 16:43:28.453 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_vs/browserLink - null null
+2024-03-25 16:43:28.453 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-25 16:43:28.479 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 26.6442ms
+2024-03-25 16:43:28.530 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_vs/browserLink - 200 null text/javascript; charset=UTF-8 78.356ms
+2024-03-25 16:43:28.599 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - null null
+2024-03-25 16:43:28.880 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 282.1463ms
+2024-03-25 16:44:01.846 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Book/CreateBook - application/json 99
+2024-03-25 16:44:01.863 +03:00 [INF] Executing endpoint 'Libriary_API.Controllers.BookController.CreateBookAsync (Library.API)'
+2024-03-25 16:44:01.903 +03:00 [INF] Route matched with {action = "CreateBook", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateBookAsync(Libriary_BAL.DTOs.BookToCreateDTO) on controller Libriary_API.Controllers.BookController (Library.API).
+2024-03-25 16:44:02.299 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-03-25 16:44:02.328 +03:00 [INF] Executed action Libriary_API.Controllers.BookController.CreateBookAsync (Library.API) in 413.8364ms
+2024-03-25 16:44:02.332 +03:00 [INF] Executed endpoint 'Libriary_API.Controllers.BookController.CreateBookAsync (Library.API)'
+2024-03-25 16:44:02.336 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Book/CreateBook - 400 null application/problem+json; charset=utf-8 490.991ms
+2024-03-25 16:44:11.665 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Book/CreateBook - application/json 108
+2024-03-25 16:44:11.696 +03:00 [INF] Executing endpoint 'Libriary_API.Controllers.BookController.CreateBookAsync (Library.API)'
+2024-03-25 16:44:11.699 +03:00 [INF] Route matched with {action = "CreateBook", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateBookAsync(Libriary_BAL.DTOs.BookToCreateDTO) on controller Libriary_API.Controllers.BookController (Library.API).
+2024-03-25 16:44:11.727 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-03-25 16:44:11.730 +03:00 [INF] Executed action Libriary_API.Controllers.BookController.CreateBookAsync (Library.API) in 24.517ms
+2024-03-25 16:44:11.732 +03:00 [INF] Executed endpoint 'Libriary_API.Controllers.BookController.CreateBookAsync (Library.API)'
+2024-03-25 16:44:11.735 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Book/CreateBook - 400 null application/problem+json; charset=utf-8 70.2771ms
+2024-03-25 16:49:54.256 +03:00 [INF] User profile is available. Using 'C:\Users\8merka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-25 16:49:54.572 +03:00 [INF] Now listening on: https://localhost:7067
+2024-03-25 16:49:54.574 +03:00 [INF] Now listening on: http://localhost:5002
+2024-03-25 16:49:54.577 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-25 16:49:54.579 +03:00 [INF] Hosting environment: Development
+2024-03-25 16:49:54.580 +03:00 [INF] Content root path: D:\Trainee\Libriary_API_Trainee_Task\Library.API
+2024-03-25 16:50:01.541 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/index.html - null null
+2024-03-25 16:50:02.263 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/index.html - 200 null text/html;charset=utf-8 733.2887ms
+2024-03-25 16:50:02.298 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-25 16:50:02.311 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 12.8421ms
+2024-03-25 16:50:02.723 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_vs/browserLink - null null
+2024-03-25 16:50:02.794 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_vs/browserLink - 200 null text/javascript; charset=UTF-8 71.5743ms
+2024-03-25 16:50:02.876 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - null null
+2024-03-25 16:50:03.143 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 267.8304ms
+2024-03-25 16:50:21.270 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Book/CreateBook - application/json 108
+2024-03-25 16:50:21.287 +03:00 [INF] Executing endpoint 'Libriary_API.Controllers.BookController.CreateBookAsync (Library.API)'
+2024-03-25 16:50:21.323 +03:00 [INF] Route matched with {action = "CreateBook", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateBookAsync(Libriary_BAL.DTOs.BookToCreateDTO) on controller Libriary_API.Controllers.BookController (Library.API).
+2024-03-25 16:50:21.778 +03:00 [INF] Executing action method Libriary_API.Controllers.BookController.CreateBookAsync (Library.API) - Validation state: "Valid"
+2024-03-25 16:50:21.791 +03:00 [INF] Creating new book {"ISBN":1111111111111,"Title":"string","Description":"string","AuthorId":2,"GenreId":4,"$type":"BookToCreateDTO"}
+2024-03-25 16:50:21.943 +03:00 [INF] Executed action Libriary_API.Controllers.BookController.CreateBookAsync (Library.API) in 610.9326ms
+2024-03-25 16:50:21.948 +03:00 [INF] Executed endpoint 'Libriary_API.Controllers.BookController.CreateBookAsync (Library.API)'
+2024-03-25 16:50:21.955 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+BookToCreateDTO -> Book
+Libriary_BAL.DTOs.BookToCreateDTO -> Libriary_DAL.Entities.Models.Book
+
+Type Map configuration:
+BookToCreateDTO -> Book
+Libriary_BAL.DTOs.BookToCreateDTO -> Libriary_DAL.Entities.Models.Book
+
+Destination Member:
+ISBN
+
+ ---> System.OverflowException: Value was either too large or too small for an Int32.
+   at System.Convert.ThrowInt32OverflowException()
+   at System.Convert.ToInt32(Int64 value)
+   at lambda_method19(Closure, Object, Book, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method19(Closure, Object, Book, ResolutionContext)
+   at Libriary_BAL.Services.BookService.CreateBookAsync(BookToCreateDTO bookToCreateDTO) in D:\Trainee\Libriary_API_Trainee_Task\Libriary_BAL\Services\BookService.cs:line 54
+   at Libriary_API.Controllers.BookController.CreateBookAsync(BookToCreateDTO bookDTO) in D:\Trainee\Libriary_API_Trainee_Task\Library.API\Controllers\BookController.cs:line 49
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-03-25 16:50:22.046 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Book/CreateBook - 500 null text/plain; charset=utf-8 777.6836ms
+2024-03-25 22:06:58.714 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Book/CreateBook - application/json 112
+2024-03-25 22:06:58.742 +03:00 [INF] Executing endpoint 'Libriary_API.Controllers.BookController.CreateBookAsync (Library.API)'
+2024-03-25 22:06:58.744 +03:00 [INF] Route matched with {action = "CreateBook", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateBookAsync(Libriary_BAL.DTOs.BookToCreateDTO) on controller Libriary_API.Controllers.BookController (Library.API).
+2024-03-25 22:06:58.785 +03:00 [INF] Executing action method Libriary_API.Controllers.BookController.CreateBookAsync (Library.API) - Validation state: "Valid"
+2024-03-25 22:06:58.789 +03:00 [INF] Creating new book {"ISBN":1111111111111,"Title":"strjjing","Description":"strijjng","AuthorId":2,"GenreId":4,"$type":"BookToCreateDTO"}
+2024-03-25 22:06:58.886 +03:00 [INF] Executed action Libriary_API.Controllers.BookController.CreateBookAsync (Library.API) in 138.501ms
+2024-03-25 22:06:58.889 +03:00 [INF] Executed endpoint 'Libriary_API.Controllers.BookController.CreateBookAsync (Library.API)'
+2024-03-25 22:06:58.892 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+BookToCreateDTO -> Book
+Libriary_BAL.DTOs.BookToCreateDTO -> Libriary_DAL.Entities.Models.Book
+
+Type Map configuration:
+BookToCreateDTO -> Book
+Libriary_BAL.DTOs.BookToCreateDTO -> Libriary_DAL.Entities.Models.Book
+
+Destination Member:
+ISBN
+
+ ---> System.OverflowException: Value was either too large or too small for an Int32.
+   at System.Convert.ThrowInt32OverflowException()
+   at System.Convert.ToInt32(Int64 value)
+   at lambda_method19(Closure, Object, Book, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method19(Closure, Object, Book, ResolutionContext)
+   at Libriary_BAL.Services.BookService.CreateBookAsync(BookToCreateDTO bookToCreateDTO) in D:\Trainee\Libriary_API_Trainee_Task\Libriary_BAL\Services\BookService.cs:line 54
+   at Libriary_API.Controllers.BookController.CreateBookAsync(BookToCreateDTO bookDTO) in D:\Trainee\Libriary_API_Trainee_Task\Library.API\Controllers\BookController.cs:line 49
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-03-25 22:06:58.919 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Book/CreateBook - 500 null text/plain; charset=utf-8 206.239ms
+2024-03-25 22:11:34.502 +03:00 [INF] Executed DbCommand (72ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2024-03-25 22:11:34.588 +03:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2024-03-25 22:11:34.661 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2024-03-25 22:11:34.736 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2024-03-25 22:11:34.737 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2024-03-25 22:11:34.752 +03:00 [INF] Applying migration '20240325191102_tableFix'.
+2024-03-25 22:11:34.915 +03:00 [INF] Executed DbCommand (111ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "Books" ALTER COLUMN "ISBN" TYPE bigint;
+2024-03-25 22:11:34.917 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20240325191102_tableFix', '8.0.3');
+2024-03-25 22:11:43.635 +03:00 [INF] User profile is available. Using 'C:\Users\8merka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-25 22:11:43.986 +03:00 [INF] Now listening on: https://localhost:7067
+2024-03-25 22:11:43.987 +03:00 [INF] Now listening on: http://localhost:5002
+2024-03-25 22:11:43.991 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-25 22:11:43.993 +03:00 [INF] Hosting environment: Development
+2024-03-25 22:11:43.994 +03:00 [INF] Content root path: D:\Trainee\Libriary_API_Trainee_Task\Library.API
+2024-03-25 22:11:51.280 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/index.html - null null
+2024-03-25 22:11:51.880 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/index.html - 200 null text/html;charset=utf-8 610.4079ms
+2024-03-25 22:11:52.239 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-25 22:11:52.253 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 14.5665ms
+2024-03-25 22:11:52.372 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_vs/browserLink - null null
+2024-03-25 22:11:52.440 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_vs/browserLink - 200 null text/javascript; charset=UTF-8 68.7071ms
+2024-03-25 22:11:52.526 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - null null
+2024-03-25 22:11:52.801 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 276.1906ms
+2024-03-25 22:12:09.310 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Book/CreateBook - application/json 108
+2024-03-25 22:12:09.331 +03:00 [INF] Executing endpoint 'Libriary_API.Controllers.BookController.CreateBookAsync (Library.API)'
+2024-03-25 22:12:09.374 +03:00 [INF] Route matched with {action = "CreateBook", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateBookAsync(Libriary_BAL.DTOs.BookToCreateDTO) on controller Libriary_API.Controllers.BookController (Library.API).
+2024-03-25 22:12:09.778 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-03-25 22:12:09.809 +03:00 [INF] Executed action Libriary_API.Controllers.BookController.CreateBookAsync (Library.API) in 424.067ms
+2024-03-25 22:12:09.813 +03:00 [INF] Executed endpoint 'Libriary_API.Controllers.BookController.CreateBookAsync (Library.API)'
+2024-03-25 22:12:09.819 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Book/CreateBook - 400 null application/problem+json; charset=utf-8 509.3301ms
+2024-03-25 22:12:20.124 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7067/api/Book/CreateBook - application/json 108
+2024-03-25 22:12:20.135 +03:00 [INF] Executing endpoint 'Libriary_API.Controllers.BookController.CreateBookAsync (Library.API)'
+2024-03-25 22:12:20.137 +03:00 [INF] Route matched with {action = "CreateBook", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateBookAsync(Libriary_BAL.DTOs.BookToCreateDTO) on controller Libriary_API.Controllers.BookController (Library.API).
+2024-03-25 22:12:20.244 +03:00 [INF] Executing action method Libriary_API.Controllers.BookController.CreateBookAsync (Library.API) - Validation state: "Valid"
+2024-03-25 22:12:20.256 +03:00 [INF] Creating new book {"ISBN":1111111111111,"Title":"string","Description":"string","AuthorId":2,"GenreId":2,"$type":"BookToCreateDTO"}
+2024-03-25 22:12:22.018 +03:00 [INF] Executed DbCommand (124ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?', @p2='?' (DbType = Int32), @p3='?' (DbType = Int64), @p4='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Books" ("AuthorId", "Description", "GenreId", "ISBN", "Title")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "BookId";
+2024-03-25 22:12:22.103 +03:00 [INF] Executed action method Libriary_API.Controllers.BookController.CreateBookAsync (Library.API), returned result Microsoft.AspNetCore.Mvc.CreatedResult in 1849.0892ms.
+2024-03-25 22:12:22.109 +03:00 [INF] Executing CreatedResult, writing value of type 'null'.
+2024-03-25 22:12:22.113 +03:00 [INF] Executed action Libriary_API.Controllers.BookController.CreateBookAsync (Library.API) in 1971.0327ms
+2024-03-25 22:12:22.116 +03:00 [INF] Executed endpoint 'Libriary_API.Controllers.BookController.CreateBookAsync (Library.API)'
+2024-03-25 22:12:22.128 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7067/api/Book/CreateBook - 204 null null 2004.6246ms
+2024-03-25 22:12:37.983 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/api/Book/GetAllBooks - null null
+2024-03-25 22:12:37.993 +03:00 [INF] Executing endpoint 'Libriary_API.Controllers.BookController.GetAllBooksAsync (Library.API)'
+2024-03-25 22:12:38.005 +03:00 [INF] Route matched with {action = "GetAllBooks", controller = "Book"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllBooksAsync(System.Threading.CancellationToken) on controller Libriary_API.Controllers.BookController (Library.API).
+2024-03-25 22:12:38.039 +03:00 [INF] Executing action method Libriary_API.Controllers.BookController.GetAllBooksAsync (Library.API) - Validation state: "Valid"
+2024-03-25 22:12:38.596 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT b."BookId", b."AuthorId", b."Description", b."GenreId", b."ISBN", b."Title", a."AuthorId", a."LastName", a."Name", g."GenreId", g."BookGenre"
+FROM "Books" AS b
+INNER JOIN "Authors" AS a ON b."AuthorId" = a."AuthorId"
+INNER JOIN "Genres" AS g ON b."GenreId" = g."GenreId"
+2024-03-25 22:12:38.622 +03:00 [INF] List of 5 books has been returned
+2024-03-25 22:12:38.645 +03:00 [INF] Executed action method Libriary_API.Controllers.BookController.GetAllBooksAsync (Library.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 603.8776ms.
+2024-03-25 22:12:38.648 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Libriary_BAL.DTOs.BookDTO, Libriary_BAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 22:12:38.662 +03:00 [INF] Executed action Libriary_API.Controllers.BookController.GetAllBooksAsync (Library.API) in 652.6974ms
+2024-03-25 22:12:38.665 +03:00 [INF] Executed endpoint 'Libriary_API.Controllers.BookController.GetAllBooksAsync (Library.API)'
+2024-03-25 22:12:38.668 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/api/Book/GetAllBooks - 200 null application/json; charset=utf-8 685.4935ms

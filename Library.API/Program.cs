@@ -1,3 +1,4 @@
+using Library.API.Extensions;
 using Libriary_API.Extensions;
 using Libriary_DAL;
 using Serilog;
@@ -17,12 +18,13 @@ services.AddMapper();
 services.RegisterBALDependencies();
 services.RegisterDALDependencies();
 services.ConfigureSwagger();
-services.AddControllers();
 services.AddAuthentication();
+services.AddAutoValidation();
 
 
 var app = builder.Build();
 
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {

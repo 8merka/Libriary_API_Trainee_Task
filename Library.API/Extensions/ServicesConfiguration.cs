@@ -9,6 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using AutoMapper;
+using FluentValidation.AspNetCore;
+using FluentValidation;
+using Libriary_BAL.Validators;
 
 namespace Libriary_API.Extensions
 {
@@ -59,6 +62,17 @@ namespace Libriary_API.Extensions
                 .AddScoped<IAuthorRepository, AuthorRepository>()
                 .AddScoped<IGenreRepository, GenreRepository>()
                 .AddScoped<IIssueRepository, IssueRepository>();
+        }
+        public static void AddAutoValidation(this IServiceCollection services)
+        {
+            services.AddValidatorsFromAssemblyContaining<AuthorToUpdateDTOValidator>()
+                    .AddValidatorsFromAssemblyContaining<BookToCreateDTOValidator>()
+                    .AddValidatorsFromAssemblyContaining<BookToUpdateDTOValidator>()
+                    .AddValidatorsFromAssemblyContaining<GenreToUpdateDTOValidator>()
+                    .AddValidatorsFromAssemblyContaining<IssueToCreateDTOValidator>()
+                    .AddValidatorsFromAssemblyContaining<IssueToUpdateDTOValidator>();
+
+            services.AddFluentValidationAutoValidation();
         }
     }
 }
