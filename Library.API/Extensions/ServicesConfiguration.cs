@@ -53,7 +53,7 @@ namespace Libriary_API.Extensions
         }
         public static void AddIdentityDbContext(this IServiceCollection services) => services.AddDbContext<AppDbContext>(options =>
         {
-            options.UseNpgsql("Host=localhost;Port=5432;Database=TraineeLibrary;Username=postgres;Password=9100");
+            options.UseNpgsql("Host=localhost;Port=5432;Database=TraineeLibrary;Username=postgres;Password=PasswordThatYouNeed");
         });
         public static void RegisterDALDependencies(this IServiceCollection services)
         {

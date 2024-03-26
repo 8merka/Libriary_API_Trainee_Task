@@ -2242,3 +2242,44 @@ INNER JOIN "Genres" AS g ON b."GenreId" = g."GenreId"
 2024-03-25 22:12:38.662 +03:00 [INF] Executed action Libriary_API.Controllers.BookController.GetAllBooksAsync (Library.API) in 652.6974ms
 2024-03-25 22:12:38.665 +03:00 [INF] Executed endpoint 'Libriary_API.Controllers.BookController.GetAllBooksAsync (Library.API)'
 2024-03-25 22:12:38.668 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/api/Book/GetAllBooks - 200 null application/json; charset=utf-8 685.4935ms
+2024-03-25 22:33:54.398 +03:00 [INF] User profile is available. Using 'C:\Users\8merka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-25 22:33:54.618 +03:00 [INF] Now listening on: https://localhost:7067
+2024-03-25 22:33:54.619 +03:00 [INF] Now listening on: http://localhost:5002
+2024-03-25 22:33:54.620 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-25 22:33:54.622 +03:00 [INF] Hosting environment: Development
+2024-03-25 22:33:54.629 +03:00 [INF] Content root path: D:\Trainee\Libriary_API_Trainee_Task\Library.API
+2024-03-25 22:34:05.831 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/index.html - null null
+2024-03-25 22:34:06.025 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/index.html - 200 null text/html;charset=utf-8 196.4786ms
+2024-03-25 22:34:06.044 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-25 22:34:06.051 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 6.5437ms
+2024-03-25 22:34:06.089 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_vs/browserLink - null null
+2024-03-25 22:34:06.123 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_vs/browserLink - 200 null text/javascript; charset=UTF-8 34.0822ms
+2024-03-25 22:34:06.173 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - null null
+2024-03-25 22:34:06.268 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 95.7859ms
+2024-03-25 23:24:27.126 +03:00 [INF] User profile is available. Using 'C:\Users\8merka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-25 23:24:27.369 +03:00 [INF] Now listening on: https://localhost:7067
+2024-03-25 23:24:27.370 +03:00 [INF] Now listening on: http://localhost:5002
+2024-03-25 23:24:27.372 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-25 23:24:27.373 +03:00 [INF] Hosting environment: Development
+2024-03-25 23:24:27.373 +03:00 [INF] Content root path: D:\Trainee\Libriary_API_Trainee_Task\Library.API
+2024-03-25 23:24:30.220 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/index.html - null null
+2024-03-25 23:24:30.564 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/index.html - 200 null text/html;charset=utf-8 352.7874ms
+2024-03-25 23:24:30.596 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-25 23:24:30.606 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 10.2171ms
+2024-03-25 23:24:30.662 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/_vs/browserLink - null null
+2024-03-25 23:24:30.786 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/_vs/browserLink - 200 null text/javascript; charset=UTF-8 124.5462ms
+2024-03-25 23:24:30.838 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - null null
+2024-03-25 23:24:30.960 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 121.7532ms
+2024-03-25 23:24:54.646 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7067/api/Author/GetAllAuthors - null null
+2024-03-25 23:24:54.655 +03:00 [INF] Executing endpoint 'Libriary_API.Controllers.AuthorController.GetAllAuthorsAsync (Library.API)'
+2024-03-25 23:24:54.670 +03:00 [INF] Route matched with {action = "GetAllAuthors", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAuthorsAsync(System.Threading.CancellationToken) on controller Libriary_API.Controllers.AuthorController (Library.API).
+2024-03-25 23:24:54.879 +03:00 [INF] Executing action method Libriary_API.Controllers.AuthorController.GetAllAuthorsAsync (Library.API) - Validation state: "Valid"
+2024-03-25 23:24:55.575 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT a."AuthorId", a."LastName", a."Name"
+FROM "Authors" AS a
+2024-03-25 23:24:55.645 +03:00 [INF] List of 2 authors has been returned
+2024-03-25 23:24:55.659 +03:00 [INF] Executed action method Libriary_API.Controllers.AuthorController.GetAllAuthorsAsync (Library.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 776.2954ms.
+2024-03-25 23:24:55.666 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Libriary_BAL.DTOs.AuthorDTO, Libriary_BAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 23:24:55.675 +03:00 [INF] Executed action Libriary_API.Controllers.AuthorController.GetAllAuthorsAsync (Library.API) in 1000.4922ms
+2024-03-25 23:24:55.676 +03:00 [INF] Executed endpoint 'Libriary_API.Controllers.AuthorController.GetAllAuthorsAsync (Library.API)'
+2024-03-25 23:24:55.681 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7067/api/Author/GetAllAuthors - 200 null application/json; charset=utf-8 1036.0692ms
