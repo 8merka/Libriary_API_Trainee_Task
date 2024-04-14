@@ -15,9 +15,9 @@ namespace Library.API.Controllers
         [Route("refresh")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> RefreshTokenAsync([FromBody] TokenDTO tokenDTO, CancellationToken token = default)
+        public async Task<IActionResult> RefreshTokenAsync([FromBody] TokenDTO tokenDTO, CancellationToken cancellationToken = default)
         {
-            var tokens = await _tokenService.RefreshTokenAsync(tokenDTO, token);
+            var tokens = await _tokenService.RefreshTokenAsync(tokenDTO, cancellationToken);
 
             return Ok(tokens);
         }

@@ -29,9 +29,9 @@ namespace Library.API.Controllers
         [ActionName("CreateAuthor")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateAuthorAsync([FromBody] AuthorDTO authorDTO)
+        public async Task<IActionResult> CreateAuthorAsync([FromBody] AuthorDTO authorDTO, CancellationToken cancellationToken = default)
         {
-            await _authorService.CreateAuthorAsync(authorDTO);
+            await _authorService.CreateAuthorAsync(authorDTO, cancellationToken);
             return Created();
         }
 
@@ -41,9 +41,9 @@ namespace Library.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> UpdateAuthorAsync([FromBody] AuthorToUpdateDTO authorToUpdateDTO)
+        public async Task<IActionResult> UpdateAuthorAsync([FromBody] AuthorToUpdateDTO authorToUpdateDTO, CancellationToken cancellationToken = default)
         {
-            await _authorService.UpdateAuthorAsync(authorToUpdateDTO);
+            await _authorService.UpdateAuthorAsync(authorToUpdateDTO, cancellationToken);
             return Ok(authorToUpdateDTO);
         }
 
@@ -54,9 +54,9 @@ namespace Library.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteAuthorAsync(int id)
+        public async Task<IActionResult> DeleteAuthorAsync(int id, CancellationToken cancellationToken = default)
         {
-            await _authorService.DeleteAuthorAsync(id);
+            await _authorService.DeleteAuthorAsync(id, cancellationToken);
             return Ok();
         }
     }

@@ -62,9 +62,9 @@ namespace Library.API.Controllers
         [ActionName("CreateIssue")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateIssueAsync([FromBody] IssueToCreateDTO issueToCreateDTO)
+        public async Task<IActionResult> CreateIssueAsync([FromBody] IssueToCreateDTO issueToCreateDTO, CancellationToken cancellationToken = default)
         {
-            await _issueService.CreateIssueAsync(issueToCreateDTO);
+            await _issueService.CreateIssueAsync(issueToCreateDTO, cancellationToken);
             return Created();
         }
 
@@ -74,9 +74,9 @@ namespace Library.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> UpdateIssueAsync([FromBody] IssueToUpdateDTO issueToUpdateDTO)
+        public async Task<IActionResult> UpdateIssueAsync([FromBody] IssueToUpdateDTO issueToUpdateDTO, CancellationToken cancellationToken = default)
         {
-            await _issueService.UpdateIssueAsync(issueToUpdateDTO);
+            await _issueService.UpdateIssueAsync(issueToUpdateDTO, cancellationToken);
             return Ok(issueToUpdateDTO);
         }
 
@@ -87,9 +87,9 @@ namespace Library.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteIssueAsync(int id)
+        public async Task<IActionResult> DeleteIssueAsync(int id, CancellationToken cancellationToken = default)
         {
-            await _issueService.DeleteIssueAsync(id);
+            await _issueService.DeleteIssueAsync(id, cancellationToken);
             return Ok();
         }
     }

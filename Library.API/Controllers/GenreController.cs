@@ -28,9 +28,9 @@ namespace Library.API.Controllers
         [ActionName("CreateGenre")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateGenreAsync([FromBody] GenreDTO genreDTO)
+        public async Task<IActionResult> CreateGenreAsync([FromBody] GenreDTO genreDTO, CancellationToken cancellationToken = default)
         {
-            await _genreService.CreateGenreAsync(genreDTO);
+            await _genreService.CreateGenreAsync(genreDTO, cancellationToken);
             return Created();
         }
 
@@ -40,9 +40,9 @@ namespace Library.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> UpdateGenreAsync([FromBody] GenreToUpdateDTO genreToUpdateDTO)
+        public async Task<IActionResult> UpdateGenreAsync([FromBody] GenreToUpdateDTO genreToUpdateDTO, CancellationToken cancellationToken = default)
         {
-            await _genreService.UpdateGenreAsync(genreToUpdateDTO);
+            await _genreService.UpdateGenreAsync(genreToUpdateDTO, cancellationToken);
             return Ok(genreToUpdateDTO);
         }
 
@@ -53,9 +53,9 @@ namespace Library.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteGenreAsync([FromRoute] int id)
+        public async Task<IActionResult> DeleteGenreAsync([FromRoute] int id, CancellationToken cancellationToken = default)
         {
-            await _genreService.DeleteGenreAsync(id);
+            await _genreService.DeleteGenreAsync(id, cancellationToken);
             return Ok();
         }
     }

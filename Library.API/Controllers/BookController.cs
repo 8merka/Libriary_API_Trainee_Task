@@ -50,9 +50,9 @@ namespace Library.API.Controllers
         [ActionName("CreateBook")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateBookAsync([FromBody] BookToCreateDTO bookDTO)
+        public async Task<IActionResult> CreateBookAsync([FromBody] BookToCreateDTO bookDTO, CancellationToken cancellationToken = default)
         {
-            await _bookService.CreateBookAsync(bookDTO);
+            await _bookService.CreateBookAsync(bookDTO, cancellationToken);
             return Created();
         }
         [Authorize(Roles = Roles.Admin)]
@@ -61,9 +61,9 @@ namespace Library.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> UpdateBookAsync([FromBody] BookToUpdateDTO bookToUpdateDTO)
+        public async Task<IActionResult> UpdateBookAsync([FromBody] BookToUpdateDTO bookToUpdateDTO, CancellationToken cancellationToken = default)
         {
-            await _bookService.UpdateBookAsync(bookToUpdateDTO);
+            await _bookService.UpdateBookAsync(bookToUpdateDTO, cancellationToken);
             return Ok(bookToUpdateDTO);
         }
         [Authorize(Roles = Roles.Admin)]
@@ -73,9 +73,9 @@ namespace Library.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteBookAsync([FromRoute] int id)
+        public async Task<IActionResult> DeleteBookAsync([FromRoute] int id, CancellationToken cancellationToken = default)
         {
-            await _bookService.DeleteBookAsync(id);
+            await _bookService.DeleteBookAsync(id, cancellationToken);
             return Ok();
         }
     }
