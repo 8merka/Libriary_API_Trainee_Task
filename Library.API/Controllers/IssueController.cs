@@ -3,9 +3,9 @@ using Libriary_BAL.Services;
 using Libriary_BAL.Services.IService;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Libriary_API.Controllers
+namespace Library.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/issue")]
     [ApiController]
     public class IssueController(IIssueService issueService) : ControllerBase
     {
@@ -22,7 +22,7 @@ namespace Libriary_API.Controllers
         //}
 
         [HttpGet]
-        [Route("GetAllFullBooks")]
+        [ActionName("GetAllFullBooks")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetAllFullBiiksAsync(CancellationToken cancellationToken)
@@ -32,26 +32,28 @@ namespace Libriary_API.Controllers
         }
 
         [HttpGet]
-        [Route("GetFullBookByISBN")]
+        [ActionName("GetFullBookByISBN")]
+        [Route("{isbn}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetBookByISBNAsync(int ISBN, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetBookByISBNAsync([FromRoute] int isbn, CancellationToken cancellationToken)
         {
-            var book = await _issueService.GetFullBookInfoByISBNAsync(ISBN, cancellationToken);
+            var book = await _issueService.GetFullBookInfoByISBNAsync(isbn, cancellationToken);
             return Ok(book);
         }
         [HttpGet]
-        [Route("GetFullBookInfo")]
+        [ActionName("GetFullBookInfo")]
+        [Route("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetFullBookInfo(int id, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetFullBookInfo([FromRoute] int id, CancellationToken cancellationToken)
         {
             var bookInfo = await _issueService.GetFullBookInfoAsync(id, cancellationToken);
             return Ok(bookInfo);
         }
 
         [HttpPost]
-        [Route("CreateIssue")]
+        [ActionName("CreateIssue")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateIssueAsync([FromBody] IssueToCreateDTO issueToCreateDTO)
@@ -61,7 +63,7 @@ namespace Libriary_API.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateIssue")]
+        [ActionName("UpdateIssue")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -72,7 +74,8 @@ namespace Libriary_API.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteIssue")]
+        [ActionName("DeleteIssue")]
+        [Route("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

@@ -3,7 +3,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.OpenApi.Models;
 
-namespace Libriary_API.Extensions
+namespace Library.API.Extensions
 {
     public static class SwaggerConfiguration
     {

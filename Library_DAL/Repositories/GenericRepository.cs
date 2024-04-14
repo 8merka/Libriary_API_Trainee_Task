@@ -20,22 +20,22 @@ namespace Libriary_DAL.Repositories
         {
             return await (filter == null ? _context.Set<TEntity>().ToListAsync(cancellationToken) : _context.Set<TEntity>().Where(filter).ToListAsync(cancellationToken));
         }
-        public async Task<TEntity> AddAsync(TEntity entity)
+        public async Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken = default)
         {
-            await _context.AddAsync(entity);
+            await _context.AddAsync(entity, cancellationToken);
             await _context.SaveChangesAsync();
             return entity;
         }
-        public async Task<TEntity> UpdateAsync(TEntity entity)
+        public async Task<TEntity> UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
         {
             _ = _context.Update(entity);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
             return entity;
         }
-        public async Task<int> DeleteAsync(TEntity entity)
+        public async Task<int> DeleteAsync(TEntity entity, CancellationToken cancellationToken = default)
         {
             _ = _context.Remove(entity);
-            return await _context.SaveChangesAsync();
+            return await _context.SaveChangesAsync(cancellationToken);
         }
     }
 }

@@ -1,6 +1,9 @@
 using Library.API.Extensions;
-using Libriary_API.Extensions;
+using Libriary_BAL.Utilities.Exceptions;
 using Libriary_DAL;
+using Libriary_DAL.Entities.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,12 +16,13 @@ services.AddControllers();
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
-services.AddIdentityDbContext();
+services.AddIdentityDbContext(builder.Configuration);
+services.AddIdentitySupport();
+services.AddAuthenticationBearer(builder.Configuration);
 services.AddMapper();
 services.RegisterBALDependencies();
 services.RegisterDALDependencies();
 services.ConfigureSwagger();
-services.AddAuthentication();
 services.AddAutoValidation();
 
 
@@ -34,8 +38,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
 app.MapControllers();
+
+app.UseAuthorization();
 
 app.Run();

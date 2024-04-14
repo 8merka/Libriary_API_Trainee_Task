@@ -6,8 +6,8 @@ namespace Libriary_DAL.Repositories.IRepositories
     {
         Task<T> GetAsync(Expression<Func<T, bool>> filter = null, CancellationToken cancellationToken = default);
         Task<List<T>> GetListAsync(Expression<Func<T, bool>> filter = null, CancellationToken cancellationToken = default);
-        Task<T> AddAsync(T entity);
-        Task<T> UpdateAsync(T entity);
-        Task<int> DeleteAsync(T entity);
+        Task<T> AddAsync(T entity, CancellationToken cancellationToken = default);
+        Task<T> UpdateAsync(T entity, CancellationToken cancellationToken = default);
+        Task<int> DeleteAsync(T entity, CancellationToken cancellationToken = default);
     }
 }

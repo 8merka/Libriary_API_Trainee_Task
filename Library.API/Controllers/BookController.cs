@@ -1,17 +1,19 @@
 ﻿using Libriary_BAL.DTOs;
 using Libriary_BAL.Services.IService;
+using Libriary_BAL.Utilities.Constants;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Libriary_API.Controllers
+namespace Library.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/book")]
     [ApiController]
     public class BookController(IBookService bookService) : ControllerBase
     {
         private readonly IBookService _bookService = bookService;
 
         [HttpGet]
-        [Route("GetAllBooks")]
+        [ActionName("GetAllBooks")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetAllBooksAsync(CancellationToken cancellationToken)
@@ -21,27 +23,29 @@ namespace Libriary_API.Controllers
         }
 
         [HttpGet]
-        [Route("GetBookByISBN")]
+        [ActionName("GetBookByISBN")]
+        [Route("{isbn}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetBookByISBNAsync(int ISBN, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetBookByISBNAsync([FromRoute] int isbn, CancellationToken cancellationToken)
         {
-            var book = await _bookService.GetBookByISBNAsync(ISBN, cancellationToken);
+            var book = await _bookService.GetBookByISBNAsync(isbn, cancellationToken);
             return Ok(book);
         }
 
         [HttpGet]
-        [Route("GetBookById")]
+        [ActionName("GetBookById")]
+        [Route("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetBookByIdAsync(int id, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetBookByIdAsync([FromRoute] int id, CancellationToken cancellationToken)
         {
             var book = await _bookService.GetBookByIdAsync(id, cancellationToken);
             return Ok(book);
         }
-
+        [Authorize(Roles = Roles.Admin)]
         [HttpPost]
-        [Route("CreateBook")]
+        [ActionName("CreateBook")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateBookAsync([FromBody] BookToCreateDTO bookDTO)
@@ -49,9 +53,9 @@ namespace Libriary_API.Controllers
             await _bookService.CreateBookAsync(bookDTO);
             return Created();
         }
-
+        [Authorize(Roles = Roles.Admin)]
         [HttpPut]
-        [Route("UpdateBook")]
+        [ActionName("UpdateBook")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -60,13 +64,14 @@ namespace Libriary_API.Controllers
             await _bookService.UpdateBookAsync(bookToUpdateDTO);
             return Ok(bookToUpdateDTO);
         }
-
+        [Authorize(Roles = Roles.Admin)]
         [HttpDelete]
-        [Route("DeleteBook")]
+        [ActionName("DeleteBook")]
+        [Route("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteBookAsync(int id)
+        public async Task<IActionResult> DeleteBookAsync([FromRoute] int id)
         {
             await _bookService.DeleteBookAsync(id);
             return Ok();

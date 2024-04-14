@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Libriary_BAL.DTOs;
 using Libriary_BAL.Services.IService;
-using Libriary_DAL.Entities.Constants;
 using Libriary_BAL.Utilities.Exceptions;
 using Libriary_DAL.Entities.Models;
 using Libriary_DAL.Repositories.IRepositories;
 using Microsoft.Extensions.Logging;
+using Libriary_BAL.Utilities.Constants;
 
 namespace Libriary_BAL.Services
 {
@@ -27,18 +27,18 @@ namespace Libriary_BAL.Services
             return _mapper.Map<List<GenreDTO>>(genresToReturn);
         }
 
-        public async Task<GenreDTO> CreateGenreAsync(GenreDTO genreDTO)
+        public async Task<GenreDTO> CreateGenreAsync(GenreDTO genreDTO, CancellationToken cancellationToken = default)
         {
             _logger.LogInformation("Creating new genre {BookGenre}", genreDTO.BookGenre);
 
-            var createdGenre = await _genreRepository.AddAsync(_mapper.Map<Genre>(genreDTO));
+            var createdGenre = await _genreRepository.AddAsync(_mapper.Map<Genre>(genreDTO), cancellationToken: cancellationToken);
 
             return _mapper.Map<GenreDTO>(createdGenre);
         }
 
-        public async Task<GenreDTO> UpdateGenreAsync(GenreToUpdateDTO genreToUpdateDTO)
+        public async Task<GenreDTO> UpdateGenreAsync(GenreToUpdateDTO genreToUpdateDTO, CancellationToken cancellationToken = default)
         {
-            var genre = await _genreRepository.GetAsync(x => x.GenreId == genreToUpdateDTO.GenreId);
+            var genre = await _genreRepository.GetAsync(x => x.GenreId == genreToUpdateDTO.GenreId, cancellationToken: cancellationToken);
 
             if (genre is null)
             {
@@ -49,18 +49,18 @@ namespace Libriary_BAL.Services
             var genreToUpdate = _mapper.Map<Genre>(genreToUpdateDTO);
 
             _logger.LogInformation("Genre with these properties: {@genreToUpdate} has been updated", genreToUpdateDTO);
-            return _mapper.Map<GenreDTO>(await _genreRepository.UpdateAsync(genreToUpdate));
+            return _mapper.Map<GenreDTO>(await _genreRepository.UpdateAsync(genreToUpdate, cancellationToken: cancellationToken));
         }
 
-        public async Task DeleteGenreAsync(int id)
+        public async Task DeleteGenreAsync(int id, CancellationToken cancellationToken = default)
         {
-            var genreToDelete = await _genreRepository.GetAsync(x => x.GenreId == id);
+            var genreToDelete = await _genreRepository.GetAsync(x => x.GenreId == id, cancellationToken: cancellationToken);
             if (genreToDelete is null)
             {
                 _logger.LogError("Genre with genreId = {id} was not found", id);
                 throw new NotFoundException(Messages.genreNotFound);
             }
-            await _genreRepository.DeleteAsync(genreToDelete);
+            await _genreRepository.DeleteAsync(genreToDelete, cancellationToken: cancellationToken);
         }
     }
 }

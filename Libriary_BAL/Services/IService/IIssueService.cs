@@ -13,8 +13,8 @@ namespace Libriary_BAL.Services.IService
         Task<List<IssueDTO>> GetAllFullBooksAsync(CancellationToken cancellationToken);
         Task<IssueDTO> GetFullBookInfoAsync(int bookId, CancellationToken cancellationToken);
         Task<IssueDTO> GetFullBookInfoByISBNAsync(int ISBN, CancellationToken cancellationToken);
-        Task<IssueToCreateDTO> CreateIssueAsync(IssueToCreateDTO issueDTO);
-        Task<IssueDTO> UpdateIssueAsync(IssueToUpdateDTO issueToUpdateDTO);
-        Task DeleteIssueAsync(int id);
+        Task<IssueToCreateDTO> CreateIssueAsync(IssueToCreateDTO issueDTO, CancellationToken cancellationToken = default);
+        Task<IssueDTO> UpdateIssueAsync(IssueToUpdateDTO issueToUpdateDTO, CancellationToken cancellationToken = default);
+        Task DeleteIssueAsync(int id, CancellationToken cancellationToken = default);
     }
 }

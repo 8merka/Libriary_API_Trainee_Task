@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
 using Libriary_BAL.DTOs;
 using Libriary_BAL.Services.IService;
-using Libriary_DAL.Entities.Constants;
 using Libriary_BAL.Utilities.Exceptions;
 using Libriary_DAL.Entities.Models;
 using Libriary_DAL.Repositories.IRepositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Libriary_DAL.Repositories;
+using System.Threading;
+using Libriary_BAL.Utilities.Constants;
 
 
 namespace Libriary_BAL.Services
@@ -58,18 +59,18 @@ namespace Libriary_BAL.Services
         }
 
 
-        public async Task<IssueToCreateDTO> CreateIssueAsync(IssueToCreateDTO issueToCreateDTO)
+        public async Task<IssueToCreateDTO> CreateIssueAsync(IssueToCreateDTO issueToCreateDTO, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Creating new issue {@IssueDTO}", issueToCreateDTO);
 
-            var createdIssue = await _issueRepository.AddAsync(_mapper.Map<Issue>(issueToCreateDTO));
+            var createdIssue = await _issueRepository.AddAsync(_mapper.Map<Issue>(issueToCreateDTO), cancellationToken: cancellationToken);
 
             return _mapper.Map<IssueToCreateDTO>(createdIssue);
         }
 
-        public async Task<IssueDTO> UpdateIssueAsync(IssueToUpdateDTO issueToUpdateDTO)
+        public async Task<IssueDTO> UpdateIssueAsync(IssueToUpdateDTO issueToUpdateDTO, CancellationToken cancellationToken = default)
         {
-            var issue = await _issueRepository.GetAsync(x => x.IssueId == issueToUpdateDTO.IssueId);
+            var issue = await _issueRepository.GetAsync(x => x.IssueId == issueToUpdateDTO.IssueId, cancellationToken: cancellationToken);
 
             if (issue is null)
             {
@@ -80,18 +81,18 @@ namespace Libriary_BAL.Services
             var issueToUpdate = _mapper.Map<Issue>(issueToUpdateDTO);
 
             _logger.LogInformation("Issue with these properties: {@issueToUpdate} has been updated", issueToUpdateDTO);
-            return _mapper.Map<IssueDTO>(await _issueRepository.UpdateAsync(issueToUpdate));
+            return _mapper.Map<IssueDTO>(await _issueRepository.UpdateAsync(issueToUpdate, cancellationToken: cancellationToken));
         }
 
-        public async Task DeleteIssueAsync(int id)
+        public async Task DeleteIssueAsync(int id, CancellationToken cancellationToken = default)
         {
-            var issueToDelete = await _issueRepository.GetAsync(x => x.IssueId == id);
+            var issueToDelete = await _issueRepository.GetAsync(x => x.IssueId == id, cancellationToken: cancellationToken);
             if (issueToDelete is null)
             {
                 _logger.LogError("Issue with issueId = {id} was not found", id);
                 throw new NotFoundException(Messages.issueNotFound);
             }
-            await _issueRepository.DeleteAsync(issueToDelete);
+            await _issueRepository.DeleteAsync(issueToDelete, cancellationToken: cancellationToken);
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Libriary_BAL.DTOs;
 using Libriary_BAL.Services.IService;
-using Libriary_DAL.Entities.Constants;
 using Libriary_BAL.Utilities.Exceptions;
 using Libriary_DAL.Entities.Models;
 using Libriary_DAL.Repositories.IRepositories;
 using Microsoft.Extensions.Logging;
+using Libriary_BAL.Utilities.Constants;
 
 namespace Libriary_BAL.Services
 {
@@ -47,18 +47,18 @@ namespace Libriary_BAL.Services
             return _mapper.Map<BookDTO>(bookToReturn);
         }
 
-        public async Task<BookToCreateDTO> CreateBookAsync(BookToCreateDTO bookToCreateDTO)
+        public async Task<BookToCreateDTO> CreateBookAsync(BookToCreateDTO bookToCreateDTO, CancellationToken cancellationToken = default)
         {
             _logger.LogInformation("Creating new book {@bookDTO}", bookToCreateDTO);
 
-            var createdBook = await _bookRepository.AddAsync(_mapper.Map<Book>(bookToCreateDTO));
+            var createdBook = await _bookRepository.AddAsync(_mapper.Map<Book>(bookToCreateDTO), cancellationToken: cancellationToken);
 
             return _mapper.Map<BookToCreateDTO>(createdBook);
         }
 
-        public async Task<BookDTO> UpdateBookAsync(BookToUpdateDTO bookToUpdateDTO)
+        public async Task<BookDTO> UpdateBookAsync(BookToUpdateDTO bookToUpdateDTO, CancellationToken cancellationToken = default)
         {
-            var book = await _bookRepository.GetAsync(x => x.BookId == bookToUpdateDTO.BookId);
+            var book = await _bookRepository.GetAsync(x => x.BookId == bookToUpdateDTO.BookId, cancellationToken: cancellationToken);
 
             if (book is null)
             {
@@ -69,18 +69,18 @@ namespace Libriary_BAL.Services
             var bookToUpdate = _mapper.Map<Book>(bookToUpdateDTO);
 
             _logger.LogInformation("Book with these properties: {@bookToUpdate} has been updated", bookToUpdateDTO);
-            return _mapper.Map<BookDTO>(await _bookRepository.UpdateAsync(bookToUpdate));
+            return _mapper.Map<BookDTO>(await _bookRepository.UpdateAsync(bookToUpdate, cancellationToken: cancellationToken));
         }
 
-        public async Task DeleteBookAsync(int id)
+        public async Task DeleteBookAsync(int id, CancellationToken cancellationToken = default)
         {
-            var bookToDelete = await _bookRepository.GetAsync(x => x.BookId == id);
+            var bookToDelete = await _bookRepository.GetAsync(x => x.BookId == id, cancellationToken: cancellationToken);
             if (bookToDelete is null)
             {
                 _logger.LogError("Book with bookId = {id} was not found", id);
                 throw new NotFoundException(Messages.bookNotFound);
             }
-            await _bookRepository.DeleteAsync(bookToDelete);
+            await _bookRepository.DeleteAsync(bookToDelete, cancellationToken: cancellationToken);
         }
     }
 }

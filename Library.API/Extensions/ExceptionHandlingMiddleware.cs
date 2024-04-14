@@ -1,5 +1,4 @@
 ﻿using Libriary_BAL.Utilities.Exceptions;
-using Libriary_DAL.Entities.Exceptions;
 using System.Net;
 
 namespace Library.API.Extensions

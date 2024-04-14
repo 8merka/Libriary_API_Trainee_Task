@@ -2,16 +2,16 @@
 using Libriary_BAL.Services.IService;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Libriary_API.Controllers
+namespace Library.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/genre")]
     [ApiController]
     public class GenreController(IGenreService genreService) : ControllerBase
     {
         private readonly IGenreService _genreService = genreService;
 
         [HttpGet]
-        [Route("GetAllGenres")]
+        [ActionName("GetAllGenres")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetAllGenresAsync(CancellationToken cancellationToken)
@@ -21,7 +21,7 @@ namespace Libriary_API.Controllers
         }
 
         [HttpPost]
-        [Route("CreateGenre")]
+        [ActionName("CreateGenre")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateGenreAsync([FromBody] GenreDTO genreDTO)
@@ -31,7 +31,7 @@ namespace Libriary_API.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateGenre")]
+        [ActionName("UpdateGenre")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -42,11 +42,12 @@ namespace Libriary_API.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteGenre")]
+        [ActionName("DeleteGenre")]
+        [Route("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteGenreAsync(int id)
+        public async Task<IActionResult> DeleteGenreAsync([FromRoute] int id)
         {
             await _genreService.DeleteGenreAsync(id);
             return Ok();

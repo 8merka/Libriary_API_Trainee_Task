@@ -10,8 +10,8 @@ namespace Libriary_BAL.Services.IService
     public interface IAuthorService
     {
         Task<List<AuthorDTO>> GetAllAuthorsAsync(CancellationToken cancellationToken = default);
-        Task<AuthorDTO> CreateAuthorAsync(AuthorDTO authorDTO);
-        Task<AuthorDTO> UpdateAuthorAsync(AuthorToUpdateDTO authorToUpdateDTO);
-        Task DeleteAuthorAsync(int id);
+        Task<AuthorDTO> CreateAuthorAsync(AuthorDTO authorDTO, CancellationToken cancellationToken = default);
+        Task<AuthorDTO> UpdateAuthorAsync(AuthorToUpdateDTO authorToUpdateDTO, CancellationToken cancellationToken = default);
+        Task DeleteAuthorAsync(int id, CancellationToken cancellationToken = default);
     }
 }

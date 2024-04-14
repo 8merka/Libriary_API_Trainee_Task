@@ -31,6 +31,7 @@ namespace Libriary_BAL.Utilities.AutoMapperProfiles
                 .ReverseMap();
             CreateMap<Issue, IssueToCreateDTO>().ReverseMap();
             CreateMap<Issue, IssueToUpdateDTO>().ReverseMap();
+            CreateMap<RegisterDTO, User>().ReverseMap();
         }
     }
 }

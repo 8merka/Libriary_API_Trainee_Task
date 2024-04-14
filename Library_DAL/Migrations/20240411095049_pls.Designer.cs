@@ -3,6 +3,7 @@ using System;
 using Libriary_DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Libriary_DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240411095049_pls")]
+    partial class pls
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -185,35 +188,35 @@ namespace Libriary_DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "752f36de-2222-4226-8c1a-0a84958a1e76",
+                            Id = "cb189d32-e29f-4ebf-b0a8-b4ce3c87e038",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "91355e9d-78b7-4b23-ba1c-0732f5490e4f",
+                            ConcurrencyStamp = "6166955f-fe62-49a4-a73b-db5a077ced51",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMINTEST",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKo11kTE0prGLMev0lvBH/FlukCKctV3UIhA6IX+9hyG8xzLDBbzFSAhvDlrjvjKQw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIwQIVo5DWAk+aILj0zfsx33G++ds6BxZRYwew2mMdX32aRFb02YEPeYMnrhyOfZIw==",
                             PhoneNumberConfirmed = false,
                             RefreshTokenExpireTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SecurityStamp = "9ec84b27-fe66-4e5d-8d45-e0583c1d885c",
+                            SecurityStamp = "b955b794-c758-4029-9bfb-6be22f67d8b7",
                             TwoFactorEnabled = false,
                             UserName = "AdminTest"
                         },
                         new
                         {
-                            Id = "f8278f3b-248e-4913-92f8-f1de8d704205",
+                            Id = "39e5d882-14a3-4a75-9e7f-bff9afff6cc8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1aaa31ef-63bd-4ab1-9964-f1185b3a9573",
+                            ConcurrencyStamp = "e9e3d236-0344-4cf0-88df-30300bab10fb",
                             Email = "user@user.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@USER.COM",
                             NormalizedUserName = "MAN I LOVE FROGS",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJZ6eXf7lmun0yi2CowhepZX+FJxqHjwQkYxEcQ9amZ1ySTm3IIhSguF4ZGtvmjQ+w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKbAivBt7SlHZ8EQ1ix7/ipwRy+4v0LmDi1P/8m4mHVLvtjPoOXwOaiwCFR1h3FdFw==",
                             PhoneNumberConfirmed = false,
                             RefreshTokenExpireTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SecurityStamp = "eca087f2-195a-4a9c-ad09-2726b76db5b1",
+                            SecurityStamp = "be87b51a-56e2-4caa-a2ba-c99d6bcb246b",
                             TwoFactorEnabled = false,
                             UserName = "Man I Love Frogs"
                         });
@@ -247,15 +250,15 @@ namespace Libriary_DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4ac01ff7-758b-4473-a9af-1e81751ed35f",
-                            ConcurrencyStamp = "4ac01ff7-758b-4473-a9af-1e81751ed35f",
+                            Id = "ce7fb4c4-0d8f-4a01-8e93-112799b504ac",
+                            ConcurrencyStamp = "ce7fb4c4-0d8f-4a01-8e93-112799b504ac",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "c26cb0fe-1797-424a-9ec2-3f1c255e8dc9",
-                            ConcurrencyStamp = "c26cb0fe-1797-424a-9ec2-3f1c255e8dc9",
+                            Id = "7227354e-9652-4cdc-8d36-c95e3d7952e3",
+                            ConcurrencyStamp = "7227354e-9652-4cdc-8d36-c95e3d7952e3",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -350,13 +353,13 @@ namespace Libriary_DAL.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "752f36de-2222-4226-8c1a-0a84958a1e76",
-                            RoleId = "4ac01ff7-758b-4473-a9af-1e81751ed35f"
+                            UserId = "cb189d32-e29f-4ebf-b0a8-b4ce3c87e038",
+                            RoleId = "ce7fb4c4-0d8f-4a01-8e93-112799b504ac"
                         },
                         new
                         {
-                            UserId = "f8278f3b-248e-4913-92f8-f1de8d704205",
-                            RoleId = "c26cb0fe-1797-424a-9ec2-3f1c255e8dc9"
+                            UserId = "39e5d882-14a3-4a75-9e7f-bff9afff6cc8",
+                            RoleId = "7227354e-9652-4cdc-8d36-c95e3d7952e3"
                         });
                 });
 
