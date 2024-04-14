@@ -23,9 +23,8 @@ namespace Library.API.Controllers
         }
 
         [Authorize(Roles = Roles.User)]
-        [HttpGet]
+        [HttpGet("isbn/{isbn}")]
         [ActionName("GetBookByISBN")]
-        [Route("{isbn}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetBookByISBNAsync([FromRoute] int isbn, CancellationToken cancellationToken)
@@ -35,9 +34,8 @@ namespace Library.API.Controllers
         }
 
         [Authorize(Roles = Roles.User)]
-        [HttpGet]
+        [HttpGet("id/{id}")]
         [ActionName("GetBookById")]
-        [Route("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetBookByIdAsync([FromRoute] int id, CancellationToken cancellationToken)

@@ -34,9 +34,8 @@ namespace Library.API.Controllers
         }
 
         [Authorize(Roles = Roles.User)]
-        [HttpGet]
+        [HttpGet("id/{isbn}")]
         [ActionName("GetFullBookByISBN")]
-        [Route("{isbn}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetBookByISBNAsync([FromRoute] int isbn, CancellationToken cancellationToken)
@@ -46,9 +45,8 @@ namespace Library.API.Controllers
         }
 
         [Authorize(Roles = Roles.User)]
-        [HttpGet]
+        [HttpGet("id/{id}")]
         [ActionName("GetFullBookInfo")]
-        [Route("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetFullBookInfo([FromRoute] int id, CancellationToken cancellationToken)
@@ -87,7 +85,7 @@ namespace Library.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteIssueAsync(int id, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> DeleteIssueAsync([FromRoute] int id, CancellationToken cancellationToken = default)
         {
             await _issueService.DeleteIssueAsync(id, cancellationToken);
             return Ok();

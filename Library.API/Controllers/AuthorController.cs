@@ -12,7 +12,6 @@ namespace Library.API.Controllers
     {
         private readonly IAuthorService _authorService = authorService;
 
-        [Authorize(Roles = Roles.User)]
         [HttpGet]
         [ActionName("GetAllAuthors")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -54,7 +53,7 @@ namespace Library.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteAuthorAsync(int id, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> DeleteAuthorAsync([FromRoute] int id, CancellationToken cancellationToken = default)
         {
             await _authorService.DeleteAuthorAsync(id, cancellationToken);
             return Ok();
