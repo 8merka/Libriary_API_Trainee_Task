@@ -18,7 +18,7 @@ namespace Libriary_DAL.Repositories
             _appDbContext = appDbContext;
         }
 
-        public async Task<List<Issue>> GetListAsync(CancellationToken cancellationToken = default)
+        public async Task<List<Issue>> GetListAsync(int pageNumber, int pageSize, CancellationToken cancellationToken = default)
         {
             return await _appDbContext.Set<Issue>()
                 .AsNoTracking()
@@ -26,6 +26,8 @@ namespace Libriary_DAL.Repositories
                 .ThenInclude(b => b.Genre)
                 .Include(b => b.Book)
                 .ThenInclude(b => b.Author)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync(cancellationToken);
         }
         public async Task<Issue> GetByIdAsync(int id, CancellationToken cancellationToken = default)

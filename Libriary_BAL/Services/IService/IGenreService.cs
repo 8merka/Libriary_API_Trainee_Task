@@ -9,7 +9,7 @@ namespace Libriary_BAL.Services.IService
 {
     public interface IGenreService
     {
-        Task<List<GenreDTO>> GetAllGenresAsync(CancellationToken cancellationToken = default);
+        Task<List<GenreDTO>> GetAllGenresAsync(int pageNumber, int pageSize, CancellationToken cancellationToken = default);
         Task<GenreDTO> CreateGenreAsync(GenreDTO genreDTO, CancellationToken cancellationToken = default);
         Task<GenreDTO> UpdateGenreAsync(GenreToUpdateDTO genreToUpdateDTO, CancellationToken cancellationToken = default);
         Task DeleteGenreAsync(int id, CancellationToken cancellationToken = default);

@@ -19,9 +19,9 @@ namespace Libriary_BAL.Services
         private readonly IMapper _mapper = mapper;
         private readonly IBookRepository _bookRepository = bookRepository;
 
-        public async Task<List<BookDTO>> GetAllBooksAsync(CancellationToken cancellationToken = default)
+        public async Task<List<BookDTO>> GetAllBooksAsync(int pageNumber, int pageSize, CancellationToken cancellationToken = default)
         {
-            var booksToReturn = await _bookRepository.GetListAsync(cancellationToken: cancellationToken);
+            var booksToReturn = await _bookRepository.GetListAsync(pageNumber, pageSize, cancellationToken: cancellationToken);
             _logger.LogInformation("List of {Count} books has been returned", booksToReturn.Count);
 
             return _mapper.Map<List<BookDTO>>(booksToReturn);

@@ -11,6 +11,6 @@ namespace Libriary_DAL.Repositories.IRepositories
     {
         Task<Issue> GetByIdAsync(int id, CancellationToken cancellationToken = default);
         Task<Issue> GetByISBNAsync(int ISBN, CancellationToken cancellationToken = default);
-        Task<List<Issue>> GetListAsync(CancellationToken cancellationToken = default);
+        Task<List<Issue>> GetListAsync(int pageNumber, int pageSize, CancellationToken cancellationToken = default);
     }
 }

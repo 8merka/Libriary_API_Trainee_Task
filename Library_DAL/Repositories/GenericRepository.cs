@@ -16,9 +16,10 @@ namespace Libriary_DAL.Repositories
         {
             return await _context.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(filter, cancellationToken);
         }
-        public async Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> filter = null, CancellationToken cancellationToken = default)
+        public async Task<List<TEntity>> GetListAsync(int pageNumber = 1, int pageSize = 10, Expression<Func<TEntity, bool>> filter = null, CancellationToken cancellationToken = default)
         {
-            return await (filter == null ? _context.Set<TEntity>().ToListAsync(cancellationToken) : _context.Set<TEntity>().Where(filter).ToListAsync(cancellationToken));
+            var entities = filter == null ? _context.Set<TEntity>() : _context.Set<TEntity>().Where(filter);
+            return await entities.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync(cancellationToken);
         }
         public async Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken = default)
         {

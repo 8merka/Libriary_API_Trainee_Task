@@ -30,9 +30,9 @@ namespace Libriary_BAL.Services
 
         //    return _mapper.Map<List<IssueDTO>>(issuesToReturn);
         //}
-        public async Task<List<IssueDTO>> GetAllFullBooksAsync(CancellationToken cancellationToken = default)
+        public async Task<List<IssueDTO>> GetAllFullBooksAsync(int pageNumber, int pageSize, CancellationToken cancellationToken = default)
         {
-            var booksToReturn = await _issueRepository.GetListAsync(cancellationToken: cancellationToken);
+            var booksToReturn = await _issueRepository.GetListAsync(pageNumber, pageSize, cancellationToken: cancellationToken);
             _logger.LogInformation("List of {Count} issues has been returned", booksToReturn.Count);
 
             return _mapper.Map<List<IssueDTO>>(booksToReturn);

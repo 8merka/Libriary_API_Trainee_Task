@@ -28,12 +28,14 @@ namespace Libriary_DAL.Repositories
                 .Include(b => b.Genre)
                 .FirstOrDefaultAsync(e => e.ISBN == ISBN, cancellationToken);
         }
-        public async Task<List<Book>> GetListAsync(CancellationToken cancellationToken = default)
+        public async Task<List<Book>> GetListAsync(int pageNumber, int pageSize, CancellationToken cancellationToken = default)
         {
             return await _appDbContext.Set<Book>()
                 .AsNoTracking()
                 .Include(b => b.Author)
                 .Include(b => b.Genre)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync(cancellationToken);
         }
 

@@ -16,12 +16,13 @@ namespace Library.API.Controllers
         [ActionName("GetAllBooks")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetAllBooksAsync(CancellationToken cancellationToken)
+        public async Task<IActionResult> GetAllBooksAsync(CancellationToken cancellationToken, int pageNumber = 1, int pageSize = 10)
         {
-            var books = await _bookService.GetAllBooksAsync(cancellationToken);
+            var books = await _bookService.GetAllBooksAsync(pageNumber, pageSize, cancellationToken);
             return Ok(books.ToList());
         }
 
+        [Authorize(Roles = Roles.User)]
         [HttpGet]
         [ActionName("GetBookByISBN")]
         [Route("{isbn}")]
@@ -33,6 +34,7 @@ namespace Library.API.Controllers
             return Ok(book);
         }
 
+        [Authorize(Roles = Roles.User)]
         [HttpGet]
         [ActionName("GetBookById")]
         [Route("{id}")]

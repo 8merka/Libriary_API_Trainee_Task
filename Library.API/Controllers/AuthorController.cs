@@ -17,11 +17,12 @@ namespace Library.API.Controllers
         [ActionName("GetAllAuthors")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetAllAuthorsAsync(CancellationToken cancellationToken)
+        public async Task<IActionResult> GetAllAuthorsAsync(CancellationToken cancellationToken, int pageNumber = 1, int pageSize = 10)
         {
-            var authors = await _authorService.GetAllAuthorsAsync(cancellationToken);
+            var authors = await _authorService.GetAllAuthorsAsync(pageNumber, pageSize, cancellationToken);
             return Ok(authors.ToList());
         }
+
 
         [Authorize(Roles = Roles.Admin)]
         [HttpPost]

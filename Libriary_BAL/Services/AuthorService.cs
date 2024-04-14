@@ -19,13 +19,13 @@ namespace Libriary_BAL.Services
         private readonly IMapper _mapper = mapper;
         private readonly IAuthorRepository _authorRepository = authorRepository;
 
-        public async Task<List<AuthorDTO>> GetAllAuthorsAsync(CancellationToken cancellationToken = default)
+        public async Task<List<AuthorDTO>> GetAllAuthorsAsync(int pageNumber, int pageSize, CancellationToken cancellationToken = default)
         {
-            var authorsToReturn = await _authorRepository.GetListAsync(cancellationToken: cancellationToken);
-            _logger.LogInformation("List of {Count} authors has been returned", authorsToReturn.Count);
-
+            var authorsToReturn = await _authorRepository.GetListAsync(pageNumber, pageSize, cancellationToken: cancellationToken);
+            _logger.LogInformation("Page {PageNumber} of authors has been returned", pageNumber);
             return _mapper.Map<List<AuthorDTO>>(authorsToReturn);
         }
+
 
         public async Task<AuthorDTO> CreateAuthorAsync(AuthorDTO authorDTO, CancellationToken cancellationToken = default)
         {

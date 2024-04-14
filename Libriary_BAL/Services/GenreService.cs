@@ -19,9 +19,9 @@ namespace Libriary_BAL.Services
         private readonly IMapper _mapper = mapper;
         private readonly IGenreRepository _genreRepository = genreRepository;
 
-        public async Task<List<GenreDTO>> GetAllGenresAsync(CancellationToken cancellationToken = default)
+        public async Task<List<GenreDTO>> GetAllGenresAsync(int pageNumber, int pageSize, CancellationToken cancellationToken = default)
         {
-            var genresToReturn = await _genreRepository.GetListAsync(cancellationToken: cancellationToken);
+            var genresToReturn = await _genreRepository.GetListAsync(pageNumber, pageSize, cancellationToken: cancellationToken);
             _logger.LogInformation("List of {Count} genres has been returned", genresToReturn.Count);
 
             return _mapper.Map<List<GenreDTO>>(genresToReturn);
