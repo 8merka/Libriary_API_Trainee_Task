@@ -23,7 +23,7 @@ namespace Library.API.Controllers
         }
 
         [Authorize(Roles = Roles.User)]
-        [HttpGet("isbn/{isbn}")]
+        [HttpGet("{isbn}")]
         [ActionName("GetBookByISBN")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
